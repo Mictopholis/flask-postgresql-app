@@ -1,28 +1,28 @@
 import os
 
 from flask import Flask, render_template, request
-#from flask_migrate import Migrate
-#from SQLAlchemy import SQLAlchemy
+from flask_migrate import Migrate
+from flask-SQLAlchemy import SQLAlchemy
 
 
-#database_uri = 'postgresql+psycopg2://{dbuser}:{dbpass}@{dbhost}/{dbname}'.format(
-#    dbuser=os.environ['DBUSER'],
-#    dbpass=os.environ['DBPASS'],
-#    dbhost=os.environ['DBHOST'],
-#    dbname=os.environ['DBNAME']
-#)
+database_uri = 'postgresql+psycopg2://{dbuser}:{dbpass}@{dbhost}/{dbname}'.format(
+    dbuser=os.environ['DBUSER'],
+    dbpass=os.environ['DBPASS'],
+    dbhost=os.environ['DBHOST'],
+    dbname=os.environ['DBNAME']
+)
 
 app = Flask(__name__)
-#app.config.update(
-#   SQLALCHEMY_DATABASE_URI=database_uri,
-#    SQLALCHEMY_TRACK_MODIFICATIONS=False,
-#)
+app.config.update(
+   SQLALCHEMY_DATABASE_URI=database_uri,
+    SQLALCHEMY_TRACK_MODIFICATIONS=False,
+)
 
 # initialize the database connection
-#db = SQLAlchemy(app)
+db = SQLAlchemy(app)
 
 # initialize database migration management
-#migrate = Migrate(app, db)
+migrate = Migrate(app, db)
 
 
 @app.route('/')
